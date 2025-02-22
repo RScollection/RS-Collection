@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RS Collection - Gift and Toy Shop</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      /* Stylish Font */
+      line-height: 1.6;
+      background-color: #f8f8f8;
+      /* Light Background */
+      color: #333;
+    }
+
+    /* Header Styles */
+    header {
+      background-color: #2c3e50;
+      /* Darker Header */
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      /* Subtle Shadow */
+    }
+
+    header img {
+      width: 150px;
+      /* Logo Size */
+      height: auto;
+      margin-bottom: 10px;
+      animation: pulse 2s infinite alternate;
+      /* Logo Animation */
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      100% {
+        transform: scale(1.1);
+      }
+    }
+
+    /* Navigation Styles */
+    nav {
+      background-color: #34495e;
+      /* Navigation Background */
+      color:white;
+      padding: 10px 0;
+    }
+
+    nav ul {
+      list-style: none;
+      text-align: center;
+    }
+
+    nav ul li {
+      display: inline;
+      margin: 0 15px;
+    }
+
+    nav a {
+      color:white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+      /* Hover Transition */
+    }
+
+    nav a:hover {
+      color: #f39c12;
+      /* Hover Color */
+    }
+
+    /* Hero Section Styles */
+    #hero {
+      background: url("https://i.imgur.com/k9y12B3.png") center/cover no-repeat;
+      /*First Photo*/
+      color: #fff;
+      text-align: center;
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Overlay */
+    }
+
+    #hero h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      /* Text Shadow */
+    }
+
+    #hero p {
+      font-size: 1.2em;
+      position: relative;
+      z-index: 1;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      /* Text Shadow */
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #e67e22;
+      color: #fff;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-top: 30px;
+      transition: background-color 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn:hover {
+      background-color: #d35400;
+    }
+
+    /* About Section Styles */
+    #about {
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    #about h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    #about p {
+      font-size: 1.1em;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    /* Products Section Styles */
+    #products {
+      background-color: #fff;
+      /* Lighter Background */
+      padding: 60px 0;
+  
+    }
+
+    #products h2 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 0 30px;
+    }
+
+    .product {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+    }
+
+    .product img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .product-info h3 {
+      font-size: 1.4em;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .product-info p {
+      font-size: 1em;
+      color: #777;
+    }
+
+    .product-info .price {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #e67e22;
+      margin-top: 10px;
+    }
+
+    /* Contact Section Styles */
+    #contact {
+      padding: 60px 0;
+      text-align: center;
+      background-color: #34495e;
+      color: #fff;
+    }
+
+    #contact h2 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
+
+    .contact-details {
+      margin-bottom: 30px;
+    }
+
+    .contact-details p {
+      font-size: 1.1em;
+      margin-bottom: 10px;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin: 0 10px;
+      font-size: 1.5em;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: #f39c12;
+    }
+
+    /* Footer Styles */
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      nav ul li {
+        display: block;
+        margin: 10px 0;
+      }
+
+      #hero h1 {
+        font-size: 2.5em;
+      }
+
+      #hero p {
+        font-size: 1em;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        padding: 0 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <img src="WhatsApp_Image_2025-02-22_at_11.09.23_AM-removebg-preview.png">
+    <h1>RS Collection</h1>
+    <p>Your one-stop shop for delightful gifts and toys!</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#photos">Photos</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="hero">
+    <h1>Find the Perfect Gift</h1>
+    <p>Explore our wide selection of toys and unique gifts for every occasion.</p>
+    <a href="#products" class="btn">visit</a>
+  </section>
+
+  <section id="about">
+    <h2>About RS Collection</h2>
+    <p>Welcome to RS Collection, your ultimate destination for gifts, toys, and beauty essentials. Our shop is designed
+      to cater to all your needs, whether you're looking for a special present, a fun toy, or a new makeup look.</p>
+    <p>We take pride in curating a selection of products that are both unique and affordable. Our gift section
+      features a wide range of items, from personalized accessories to home decor. Our toy section is designed to
+      inspire imagination and creativity in children of all ages. And our cosmetics section offers a variety of
+      products from leading brands, as well as expert advice from our experienced staff.</p>
+    <p>At RS Collection, we're committed to providing exceptional customer service and ensuring that every visit is a
+      memorable one. Whether you're shopping for yourself or someone special, we invite you to explore our shop and
+      discover the perfect treasure.</p>
+    <!--OR-->
+    <!-- <p>Discover the ultimate shopping experience at RS Collection! Our shop offers a unique blend of gifts, toys, and cosmetics, carefully curated to cater to all your needs. From personalized presents to fun toys and beauty essentials, we have something for everyone. Visit us today and let our experienced staff help you find the perfect treasure!</p> -->
+  </section>
+
+  <section id="products">
+    <h2>Our Products</h2>
+    <p style="text-align: center;"><b>Starting Price: Rs. 149</b></p>
+    <div class="product-grid">
+      <div class="product">
+        <img src="download (2).jpeg" alt="Gifting">
+        <div class="product-info">
+          <h3>Gifts</h3>
+          <p>praise your friends and love ones</p>
+          <p class="price">starting from Rs.199</p>
+        </div>
+      </div>
+      <div class="product">
+        <img src="th.jpeg" alt="Decor">
+        <div class="product-info">
+          <h3>Decor</h3>
+          <p>beautiful decor items !</p>
+          <p class="price">starting from Rs. 199</p>
+        </div>
+      </div>
+      <div class="product">
+        <img src="download (18).jpeg" alt="Fidget Toys">
+        <div class="product-info">
+          <h3>Fidget Toys</h3>
+          <p>Help with focus and stress!</p>
+          <p class="price">starting from Rs. 199</p>
+        </div>
+      </div>
+      <div class="product">
+        <img src="download (17).jpeg" alt="Soft toys">
+        <div class="product-info">
+          <h3>Soft toys</h3>
+          <p>soft toys for your loved ones</p>
+          <p class="price">starting from Rs.249</p>
+        </div>
+      </div>
+      <div class="product">
+        <img src="download (16).jpeg" alt="Kids Toys">
+        <div class="product-info">
+          <h3>Kids Toys</h3>
+          <p>Toys for your Kids</p>
+          <p class="price">starting from Rs. 149</p>
+        </div>
+      </div>
+      <div class="product">
+        <img src="download (24).jpeg" alt="cosmatics">
+        <div class="product-info">
+          <h3>cosmatics</h3>
+          <p>branded beauty products</p>
+          <p class="price">starting from Rs. 199</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="photos">
+    <h2>Photo Gallery</h2>
+    <div style="text-align: center;">
+      <img src="download (1).jpeg" alt="Gifting Items" width="500" style="margin: 10px;">
+      <img src="download (3).jpeg" alt="Decor Items" width="500" style="margin: 10px;">
+      <img src="download (18).jpeg" alt="Kids Toys" width="500" style="margin: 10px;">
+      <img src="download (23).jpeg" alt="cosmatics" width="500" style="margin: 10px;">
+<div>
+  </section>
+
+    
+
+  </section>
+
+  </script>
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RS Collection - Gift and Toy Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* ... (Your CSS) ... */
+    </style>
+</head>
+<body>
+
+    <!-- ... (Your Header, Nav, Sections) ... -->
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-details">
+            <p><a href="tel:9829070549" class="btn">Contact us</a></p>
+            <p><i class="fa fa-map-marker"></i> Shop No. 50, Ajmer Road, Sahu Chok, Sodala, Jaipur, Rajasthan</p>
+        </div>
+
+    </section>
+    
+    
+    <footer>
+        © 2024 RS Collection. All rights reserved.
+      </footer>
+     
+  
+</body>
+</html>
